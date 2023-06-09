@@ -12,14 +12,12 @@
  * boolean for if game is going so I can stop players from clicking after a win
  */
 
-// const header = $(".display-1");
-// console.log(header);
-const boxes = document.querySelectorAll("#box"); //$("#box");   //target boxes
+const boxes = document.querySelectorAll("#box"); //target boxes
 //console.log(boxes);
-const statusText = document.querySelector("#statusText"); //$("#statusText"); //target status text
+const statusText = document.querySelector("#statusText"); //target status text
 //console.log(statusText);
-const startButton = document.querySelector("#startButton"); //$("#startButton"); //target button
-//console.log(startButton); //checking to make sure I targeted button correctly
+const startButton = document.querySelector("#startButton"); //target button
+//console.log(startButton);
 
 //so I can check if a player can add an x or o to the square and also to check for win/draw
 let squareOptions = ["", "", "", "", "", "", "", "", ""];
@@ -32,7 +30,7 @@ beginGame();
 //start game function that sets up my game
 function beginGame() {
   //add an event listener to each box so that is updates when clicked
-  boxes.forEach((box) => box.addEventListener("click", boxClicked)); //have to make boxClicked function
+  boxes.forEach((box) => box.addEventListener("click", boxClicked));
   //add event listener to startButton to restart game when finished
   startButton.addEventListener("click", restartGame);
   statusText.textContent = `${currentPlayer}'s Turn!`;
@@ -46,7 +44,7 @@ function boxClicked() {
     return;
   }
   updateBox(this, boxIndex); //updateBox (pass in the box that has been clicked and it's index)
-  checkWinner(); //have to make still
+  checkWinner();
   this.classList.add("animate"); //to add in the animation when a box is filled
 }
 
