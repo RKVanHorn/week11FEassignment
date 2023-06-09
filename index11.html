@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tic-Tac-Toe</title>
+    <link
+      rel="stylesheet"
+      href="node_modules/bootstrap/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="bg-dark-subtle">
+    <header class="bg-dark text-white text-center p-5">
+      <h1 class="display-1">Tic Tac Toe</h1>
+    </header>
+
+    <div class="display-3 text-center mt-3" id="statusText"></div>
+
+    <div class="container mx-auto my-3">
+      <div class="board">
+        <div boxIndex="0" id="box"></div>
+        <div boxIndex="1" id="box"></div>
+        <div boxIndex="2" id="box"></div>
+
+        <div boxIndex="3" id="box"></div>
+        <div boxIndex="4" id="box"></div>
+        <div boxIndex="5" id="box"></div>
+
+        <div boxIndex="6" id="box"></div>
+        <div boxIndex="7" id="box"></div>
+        <div boxIndex="8" id="box"></div>
+      </div>
+    </div>
+    <div class="d-grid justify-content-center">
+      <button type="submit" class="btn btn-danger btn-lg" id="startButton">
+        Start New Game!
+      </button>
+    </div>
+
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="tic-tac-toe.js"></script>
+  </body>
+</html>

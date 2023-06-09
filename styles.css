@@ -1,0 +1,50 @@
+@keyframes letters {
+  0% {
+    color: white;
+  }
+  25% {
+    color: #dc3545;
+  }
+  50% {
+    color: white;
+  }
+  75% {
+    color: #dc3545;
+  }
+  100% {
+    color: white;
+  }
+}
+
+.animate {
+  animation-name: letters;
+  animation-duration: 1s;
+}
+.board {
+  display: grid;
+  grid-template: 1fr 1fr 1fr / 1fr 1fr 1fr;
+  max-width: 500px;
+  text-align: center;
+  text-justify: center;
+  margin: auto;
+}
+
+#box {
+  aspect-ratio: 1;
+  background-color: #343a40;
+  margin: 0.5rem;
+  color: white;
+  font-family: monospace;
+  font-size: 6rem;
+  cursor: pointer;
+}
+
+#box:hover {
+  background-color: #dc3545;
+}
+.row {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
