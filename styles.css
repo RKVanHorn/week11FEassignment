@@ -37,8 +37,13 @@
   font-family: monospace;
   font-size: 6rem;
   cursor: pointer;
+  box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.5);
 }
 
 #box:hover {
   background-color: #dc3545;
+}
+
+.modal {
+  font-size: 50px;
 }

@@ -12,22 +12,27 @@
  * boolean for if game is going so I can stop players from clicking after a win
  */
 
+/*Constants*/
 const boxes = document.querySelectorAll("#box"); //target boxes
 //console.log(boxes);
 const statusText = document.querySelector("#statusText"); //target status text
 //console.log(statusText);
 const startButton = document.querySelector("#startButton"); //target button
 //console.log(startButton);
+// const canvas = document.querySelector("#confetti");
+const modalContent = document.querySelector("#modal-text"); //target modal text
+const jsConfetti = new JSConfetti();
 
-//so I can check if a player can add an x or o to the square and also to check for win/draw
+/**Variables */
+
 let squareOptions = ["", "", "", "", "", "", "", "", ""];
+//so I can check if a player can add an x or o to the square and also to check for win/draw
 let currentPlayer = "X";
 //boolean for if game is going so I can stop players from clicking after a win
 let gameOn = false;
 
 beginGame();
 
-//start game function that sets up my game
 function beginGame() {
   //add an event listener to each box so that is updates when clicked
   boxes.forEach((box) => box.addEventListener("click", boxClicked));
@@ -43,7 +48,7 @@ function boxClicked() {
     //validate to make sure box is empty and game is going
     return;
   }
-  updateBox(this, boxIndex); //updateBox (pass in the box that has been clicked and it's index)
+  updateBox(this, boxIndex); //updateBox (pass in the box that has been clicked and its index)
   checkWinner();
   this.classList.add("animate"); //to add in the animation when a box is filled
 }
@@ -55,11 +60,6 @@ function updateBox(box, index) {
 
 //switch turns
 function changePlayer() {
-  // if (currentPlayer == "X") {
-  //   currentPlayer = "O";
-  // } else {
-  //   currentPlayer = "X";
-  // }
   currentPlayer = currentPlayer == "X" ? "O" : "X";
   //console.log("Changing player new player is", currentPlayer);
   statusText.textContent = `${currentPlayer}'s Turn!`;
@@ -68,7 +68,8 @@ function changePlayer() {
 //check for a winner
 function checkWinner() {
   let winningCombos = [];
-  //put X or O in the array so can keep track and see if anyone won
+  // put X or O in the array so can keep track and see if anyone won
+
   winningCombos.push(squareOptions[0] + squareOptions[1] + squareOptions[2]);
   winningCombos.push(squareOptions[3] + squareOptions[4] + squareOptions[5]);
   winningCombos.push(squareOptions[6] + squareOptions[7] + squareOptions[8]);
@@ -78,16 +79,14 @@ function checkWinner() {
   winningCombos.push(squareOptions[0] + squareOptions[4] + squareOptions[8]);
   winningCombos.push(squareOptions[2] + squareOptions[4] + squareOptions[6]);
 
-  console.log(winningCombos);
+  //console.log(winningCombos);
 
   if (winningCombos.includes("XXX")) {
     //console.log("X wins");
-    statusText.textContent = `${currentPlayer} wins!`;
-    gameOn = false;
+    declareWinner();
   } else if (winningCombos.includes("OOO")) {
     //console.log("O wins");
-    statusText.textContent = `${currentPlayer} wins!`;
-    gameOn = false;
+    declareWinner();
   } else if (!squareOptions.includes("")) {
     //console.log("Its a draw");
     statusText.textContent = `It's a Draw!`;
@@ -96,6 +95,25 @@ function checkWinner() {
     //console.log("Keep playing");
     changePlayer();
   }
+}
+
+function declareWinner() {
+  statusText.textContent = `${currentPlayer} wins!`;
+  gameOn = false;
+  modalContent.textContent = `${currentPlayer} wins!`;
+  jsConfetti
+    .addConfetti({
+      confettiColors: [
+        "#ff0000",
+        "#ffa500",
+        "#ffff00",
+        "#008000",
+        "#0000ff",
+        "#4b0082",
+        "#ee82ee",
+      ],
+    })
+    .then(() => $(".modal").modal("show"));
 }
 
 function restartGame() {

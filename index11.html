@@ -35,7 +35,31 @@
       </button>
     </div>
 
+    <div class="modal text-center" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Woohoo!</h5>
+          </div>
+          <div class="modal-body">
+            <p id="modal-text"></p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-danger"
+              data-bs-dismiss="modal"
+            >
+              Let's play again!
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
     <script src="tic-tac-toe.js"></script>
   </body>
 </html>
