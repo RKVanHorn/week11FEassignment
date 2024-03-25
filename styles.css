@@ -47,3 +47,21 @@
 .modal {
   font-size: 50px;
 }
+
+@media (max-width: 500px) {
+  #box {
+    font-size: 4.5rem;
+  }
+}
+
+@media (max-width: 360px) {
+  #box {
+    font-size: 4rem;
+  }
+}
+
+@media (max-width: 300px) {
+  #box {
+    font-size: 3rem;
+  }
+}
